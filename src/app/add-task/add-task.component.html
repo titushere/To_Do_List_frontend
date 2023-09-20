@@ -1,0 +1,174 @@
+
+<h2 id="titletag">Add New Task</h2>
+<div class="container" >
+<form  #addForm="ngForm">
+<!-- <div class="row">
+    <mat-form-field>
+        <mat-label>Note Name</mat-label>
+        <input matInput type="text"required placeholder="Name" minlength="3" #Name="ngModel" name="customerName" [(ngModel)]="formdata.taskName">
+        <div *ngIf="Name?.invalid && (Name?.dirty || Name?.touched)">
+           <mat-error *ngIf="Name.errors?.['required']">
+                 Empty Task Name
+           </mat-error>
+           <mat-error *ngIf="Name.errors?.['minlength']">
+               Name Minimum Length is{{Name.errors?.['minlength']?.requiredLength}}
+           </mat-error>
+        </div>
+  </mat-form-field>
+
+<mat-form-field>
+      <mat-label>Select Due Date</mat-label>
+      <input matInput [matDatepicker]="picker" required placeholder="Due Date" name="dueDate" #dueDate="ngModel" [(ngModel)]="formdata.dueDate"  [min]="minDate">
+      <mat-hint>MM/DD/YYYY</mat-hint>
+      <mat-datepicker-toggle matSuffix [for]="picker" ></mat-datepicker-toggle>
+        <mat-datepicker #picker ></mat-datepicker>
+        <div *ngIf="dueDate?.invalid && (dueDate?.dirty || dueDate?.touched)">
+            <mat-error *ngIf="dueDate.errors?.['required']">
+                 Task Due date is required
+            </mat-error>
+        </div>
+</mat-form-field>
+</div>
+<div class="row">
+<mat-form-field>
+      <mat-label>Provide A desc for your task</mat-label>
+      <textarea matInput rows="1" required placeholder="taskDesc" name="taskDesc" [(ngModel)]="formdata.taskDesc" #taskDesc="ngModel" minlength="10" pattern="^[#.0-9a-zA-Z\s,:-]+$">
+      </textarea>
+      <div *ngIf="taskDesc?.invalid && (taskDesc?.dirty || taskDesc?.touched)">
+         <mat-error *ngIf="taskDesc.errors?.['required']">
+            taskDesc cannot be empty.
+         </mat-error>
+         <mat-error *ngIf="taskDesc.errors?.['minlength']">
+            taskDesc Minimum Length is{{taskDesc.errors?.['minlength']?.requiredLength}}
+        </mat-error>
+        <mat-error *ngIf="taskDesc.errors?.['pattern']">
+            taskDesc contains unsupported symbols(@*(%;?)$!^).
+       Please follow valid format
+      </mat-error>
+      </div>
+</mat-form-field>
+<mat-form-field>
+      <mat-label>Set Priority</mat-label>
+    
+      <mat-select required placeholder="priority" name="priority" [(ngModel)]="formdata.priority" #priority="ngModel">
+        <mat-option value="High">High<mat-icon style="color: red;">donut_small</mat-icon></mat-option>
+        <mat-option value="Medium">Medium<mat-icon style="color:coral; ">donut_large</mat-icon></mat-option>
+        <mat-option value="Low">Low<mat-icon style="color: yellowgreen">drag_indicator</mat-icon></mat-option>
+
+         </mat-select>
+
+      
+      <div *ngIf="priority?.invalid && (priority?.dirty || priority?.touched)">
+         <mat-error *ngIf="priority.errors?.['required']">
+            Set any 1 Importance level.
+         </mat-error>
+      </div>
+</mat-form-field>  
+</div>
+<div class="row">
+    <mat-form-field>
+        <mat-label>Set Category</mat-label>
+      
+        <mat-select required placeholder="category" name="category" [(ngModel)]="formdata.category" #category="ngModel">
+          <mat-option value="Fitness">Fitness</mat-option>
+          <mat-option value="Work">Work</mat-option>
+          <mat-option value="Home">Home</mat-option>
+          <mat-option value="Shopping">Shopping</mat-option>
+          <mat-option value="others">others</mat-option>
+  
+           </mat-select>
+  
+        
+        <div *ngIf="category?.invalid && (category?.dirty || category?.touched)">
+           <mat-error *ngIf="category.errors?.['required']">
+             Pick one at least
+           </mat-error>
+        </div>
+  </mat-form-field>  
+</div> -->
+
+<mat-form-field>
+   <mat-label>Note Name</mat-label>
+   <input matInput type="text"required placeholder="Name" minlength="3" #Name="ngModel" name="customerName" [(ngModel)]="formdata.taskName">
+   <div *ngIf="Name?.invalid && (Name?.dirty || Name?.touched)">
+      <mat-error *ngIf="Name.errors?.['required']">
+            Empty Task Name
+      </mat-error>
+      <mat-error *ngIf="Name.errors?.['minlength']">
+          Name Minimum Length is{{Name.errors?.['minlength']?.requiredLength}}
+      </mat-error>
+   </div>
+</mat-form-field><br>
+
+<mat-form-field>
+ <mat-label>Select Due Date</mat-label>
+ <input matInput [matDatepicker]="picker" required placeholder="Due Date" name="dueDate" #dueDate="ngModel" [(ngModel)]="formdata.dueDate"  [min]="minDate">
+ <mat-hint>MM/DD/YYYY</mat-hint>
+ <mat-datepicker-toggle matSuffix [for]="picker" ></mat-datepicker-toggle>
+   <mat-datepicker #picker ></mat-datepicker>
+   <div *ngIf="dueDate?.invalid && (dueDate?.dirty || dueDate?.touched)">
+       <mat-error *ngIf="dueDate.errors?.['required']">
+            Task Due date is required
+       </mat-error>
+   </div>
+</mat-form-field><br>
+
+<mat-form-field>
+   <mat-label>Provide A desc for your task</mat-label>
+   <textarea matInput rows="1" required placeholder="taskDesc" name="taskDesc" [(ngModel)]="formdata.taskDesc" #taskDesc="ngModel" minlength="10" pattern="^[#.0-9a-zA-Z\s,:-]+$">
+   </textarea>
+   <div *ngIf="taskDesc?.invalid && (taskDesc?.dirty || taskDesc?.touched)">
+      <mat-error *ngIf="taskDesc.errors?.['required']">
+         taskDesc cannot be empty.
+      </mat-error>
+      <mat-error *ngIf="taskDesc.errors?.['minlength']">
+         taskDesc Minimum Length is{{taskDesc.errors?.['minlength']?.requiredLength}}
+     </mat-error>
+     <mat-error *ngIf="taskDesc.errors?.['pattern']">
+         taskDesc contains unsupported symbols(@*(%;?)$!^).
+    Please follow valid format
+   </mat-error>
+   </div>
+</mat-form-field><br>
+
+<mat-form-field>
+   <mat-label>Set Priority</mat-label>
+   <mat-select required placeholder="priority" name="priority" [(ngModel)]="formdata.priority" #priority="ngModel">
+     <mat-option value="High">High</mat-option>
+     <mat-option value="Medium">Medium</mat-option>
+     <mat-option value="Low">Low</mat-option>
+   </mat-select>
+   <div *ngIf="priority?.invalid && (priority?.dirty || priority?.touched)">
+      <mat-error *ngIf="priority.errors?.['required']">
+         Set any 1 Importance level.
+      </mat-error>
+   </div>
+</mat-form-field><br>
+
+<mat-form-field>
+   <mat-label>Set Category</mat-label>
+   <mat-select required placeholder="category" name="category" [(ngModel)]="formdata.category" #category="ngModel">
+     <mat-option value="Fitness">Fitness</mat-option>
+     <mat-option value="Work">Work</mat-option>
+     <mat-option value="Home">Home</mat-option>
+     <mat-option value="Shopping">Shopping</mat-option>
+     <mat-option value="Music">Music</mat-option>
+     <mat-option value="Food">Food</mat-option>
+     <mat-option value="Travel">Travel</mat-option>
+     <mat-option value="Movies">Movies</mat-option>
+     <mat-option value="Others">Others</mat-option>
+   </mat-select>
+   <div *ngIf="category?.invalid && (category?.dirty || category?.touched)">
+      <mat-error *ngIf="category.errors?.['required']">
+        Pick one at least
+      </mat-error>
+   </div>
+</mat-form-field><br>
+
+
+  <button id="sub" type ="submit" mat-raised-button  color="primary" (click)="makeRequest()" [disabled]="addForm.invalid">Add Task</button>
+  <button mat-raised-button color="accent" (click)="checkbeforeexit()" >Cancel</button>
+  
+
+
+

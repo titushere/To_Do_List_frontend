@@ -1,0 +1,29 @@
+mat-form-field{
+   color: #ff6666;
+   margin-right:10px;
+   margin-left: 10px;
+}
+div{
+    mat-form-field{
+        width: 100%;
+    }
+}
+.container{
+    /* background-color: #ffcc66; */
+    background-color: #AED2FF ;
+    padding-top:20px;
+}
+#titletag{
+    background-color:#27005D ;
+    margin-bottom:0%;
+    color:white;
+    text-transform: capitalize;
+    font-weight: bold;
+    text-align:center;
+    width:100%;border-radius:2px;
+}
+button{
+    /* margin-left:100px; */
+    margin-left:10px;
+    margin-bottom:30px;
+}

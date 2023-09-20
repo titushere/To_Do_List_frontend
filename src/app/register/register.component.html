@@ -1,0 +1,73 @@
+<!-- background="../assets/background.jpg" -->
+<html>
+    <body>
+        <form id="loginForm" #loginForm="ngForm" (ngSubmit)="registerProcess()" style="width:fit-content;margin-left:45%;margin-top:5%">
+            <mat-card style="padding-bottom:20px;">
+                <mat-card-title style="background-color:#9400FF;">
+            <h2 style="padding-left:35%;">Register</h2>
+        </mat-card-title>
+        <mat-card-content>
+            <mat-form-field style="margin-top: 10px;">
+                <mat-label>Your Name</mat-label>
+                <input matInput type="text" required placeholder="Name" name="userName" minlength="3"  #userName="ngModel" [(ngModel)] = "user.userName">
+                <div *ngIf="userName?.invalid && (userName?.dirty || userName?.touched)">
+                <mat-error *ngIf="userName.errors?.['required']">
+                        Name Cannot be Empty
+                </mat-error>
+                <mat-error *ngIf="userName.errors?.['minlength']">
+                    Name Minimum Length is{{userName.errors?.['minlength']?.requiredLength}}
+                </mat-error>
+                </div>
+        </mat-form-field>
+        </mat-card-content>
+        <mat-card-content>
+            <mat-form-field style="display: block;">
+                <mat-label>UserEmail</mat-label>
+                <input matInput type="text" required placeholder="Email" name="userEmail" #userEmail="ngModel" [(ngModel)] = "user.userEmail" [email]="true"  pattern="[a-z]+[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+                <div *ngIf="userEmail?.invalid &&  userEmail?.touched">
+                    <mat-error *ngIf="userEmail.errors?.['required']">
+                        Email cannot be empty.
+                    </mat-error>
+                    <mat-error *ngIf="userEmail.errors?.['pattern']">
+                    Email is in invalid format.
+                    </mat-error>
+                </div>
+            </mat-form-field>
+        </mat-card-content>
+        <mat-card-content>
+            <mat-form-field>
+                <mat-label>Phone</mat-label>
+                <input matInput type="phone"required placeholder="Phone" name="userPhone" #userPhone="ngModel" [(ngModel)] = "user.userPhone" minlength="10" maxlength="10"  pattern="^[7-9][0-9]{9}$">
+                <div *ngIf="userPhone?.invalid && (userPhone?.dirty || userPhone?.touched)">
+                <mat-error *ngIf="userPhone.errors?.['required']">
+                    Phone No.Cannot be Empty
+                </mat-error>
+                <mat-error *ngIf="userPhone.errors?.['minlength']">
+                    Enter phone number of {{userPhone.errors?.['minlength']?.requiredLength}} digits
+                </mat-error>
+                <mat-error *ngIf="userPhone.errors?.['pattern']">
+                    Pleas enter valid (+91) Phone Number.
+                </mat-error>
+                </div>
+        </mat-form-field>
+        </mat-card-content>
+        <mat-card-content  >
+        <mat-form-field style="display: block;">
+            <mat-label>Set your Password</mat-label>
+            <input matInput type="password" required placeholder="password" name="userPassword" #userPassword="ngModel" [(ngModel)] = "user.userPassword">
+            <div *ngIf="userPassword?.invalid && (userPassword?.dirty || userPassword?.touched)">
+                <mat-error *ngIf="userPassword.errors?.['required']">
+                    Enter Password
+                </mat-error>
+            </div>
+        </mat-form-field>
+        </mat-card-content>
+
+        <mat-card-footer>
+        <button mat-raised-button class="primary" type="submit"  [disabled]="loginForm.invalid"  color="primary" style="margin-left:30%;">Register</button>
+        </mat-card-footer>
+        <p style="margin-top:15px;margin-left:5px;">Already have an Account? <a routerLink="/login">Login</a></p>
+        </mat-card>
+        </form>
+    </body>
+</html>

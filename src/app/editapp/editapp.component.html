@@ -1,0 +1,124 @@
+
+<html style="display:inline;">
+<mat-toolbar style="background-color: #9400FF;">
+  <mat-toolbar-row>
+  <button mat-icon-button  (click)="sidenav.toggle();"><mat-icon >vertical_split</mat-icon></button>
+    <h3>Update Task</h3>
+    <button (click)="logoutf()" matTooltip="Logout" id="logout"><mat-icon>logout</mat-icon></button>
+</mat-toolbar-row>
+</mat-toolbar>
+
+<mat-sidenav-container >
+<mat-sidenav  #sidenav opened="true" mode="side" style="background-color: #E4F1FF;">
+<mat-nav-list >
+  <a mat-list-item  routerLink="../../main" matTooltip="HOME" id="hov"><mat-icon id="iclass">home</mat-icon></a>
+  <a mat-list-item  routerLink="../../high" matTooltip="PRIORITIZE"><mat-icon id="iclass">priority_high</mat-icon></a>
+  <a mat-list-item  routerLink="../../today" matTooltip="TODAYS TASK"><mat-icon id="iclass">today</mat-icon></a>
+  <a mat-list-item routerLink="../../archive"matTooltip="YOUR ARCHIVES" ><mat-icon id="iclass">archive</mat-icon></a>
+</mat-nav-list>
+</mat-sidenav>
+<mat-sidenav-content>
+
+   <div >
+      <body style="background-color: #AED2FF;">
+         <!-- <h2 style="font-weight:bold;font-size: x-large;color:rgb(0, 83, 128);">Here is a the task for Editing:</h2> -->
+         <form  #addForm="ngForm" style="margin-left: 100px;margin-top: 30px;border:1 px solid rgb(68, 60, 161);" >
+            <div class="row">
+                <mat-form-field>
+                    <mat-label>Note Name</mat-label>
+                    <input matInput type="text"required placeholder="Name" minlength="3" #Name="ngModel" name="customerName" [(ngModel)]="formdata.taskName">
+                    <div *ngIf="Name?.invalid && (Name?.dirty || Name?.touched)">
+                       <mat-error *ngIf="Name.errors?.['required']">
+                             Empty Task Name
+                       </mat-error>
+                       <mat-error *ngIf="Name.errors?.['minlength']">
+                           Name Minimum Length is{{Name.errors?.['minlength']?.requiredLength}}
+                       </mat-error>
+                    </div>
+              </mat-form-field>
+            
+            <mat-form-field>
+                  <mat-label>Select Due Date</mat-label>
+                  <input matInput [matDatepicker]="picker" required placeholder="Due Date" name="dueDate" #dueDate="ngModel" [(ngModel)]="formdata.dueDate"  [min]="minDate">
+                  <mat-hint>MM/DD/YYYY</mat-hint>
+                  <mat-datepicker-toggle matSuffix [for]="picker" ></mat-datepicker-toggle>
+                    <mat-datepicker #picker ></mat-datepicker>
+                    <div *ngIf="dueDate?.invalid && (dueDate?.dirty || dueDate?.touched)">
+                        <mat-error *ngIf="dueDate.errors?.['required']">
+                             Task Due date is required
+                        </mat-error>
+                    </div>
+            </mat-form-field>
+            </div>
+            <div class="row">
+            <mat-form-field>
+                  <mat-label>Provide A desc for your task</mat-label>
+                  <textarea matInput rows="1" required placeholder="taskDesc" name="taskDesc" [(ngModel)]="formdata.taskDesc" #taskDesc="ngModel" minlength="10" pattern="^[#.0-9a-zA-Z\s,:-]+$">
+                  </textarea>
+                  <div *ngIf="taskDesc?.invalid && (taskDesc?.dirty || taskDesc?.touched)">
+                     <mat-error *ngIf="taskDesc.errors?.['required']">
+                        taskDesc cannot be empty.
+                     </mat-error>
+                     <mat-error *ngIf="taskDesc.errors?.['minlength']">
+                        taskDesc Minimum Length is{{taskDesc.errors?.['minlength']?.requiredLength}}
+                    </mat-error>
+                    <mat-error *ngIf="taskDesc.errors?.['pattern']">
+                        taskDesc contains unsupported symbols(@*(%;?)$!^).
+                   Please follow valid format
+                  </mat-error>
+                  </div>
+            </mat-form-field>
+            <mat-form-field>
+                  <mat-label>Set Priority</mat-label>
+                
+                  <mat-select required placeholder="priority" name="priority" [(ngModel)]="formdata.priority" #priority="ngModel">
+                    <mat-option value="High">High</mat-option>
+                    <mat-option value="Medium">Medium</mat-option>
+                    <mat-option value="Low">Low</mat-option>
+            
+                     </mat-select>
+            
+                  
+                  <div *ngIf="priority?.invalid && (priority?.dirty || priority?.touched)">
+                     <mat-error *ngIf="priority.errors?.['required']">
+                        Set any 1 Importance level.
+                     </mat-error>
+                  </div>
+            </mat-form-field>  
+            </div>
+            <div class="row">
+                <mat-form-field>
+                    <mat-label>Set Category</mat-label>
+                  
+                    <mat-select required placeholder="category" name="category" [(ngModel)]="formdata.category" #category="ngModel">
+                      <mat-option value="Fitness">Fitness</mat-option>
+                      <mat-option value="Work">Work</mat-option>
+                      <mat-option value="Home">Home</mat-option>
+                      <mat-option value="Shopping">Shopping</mat-option>
+                      <mat-option value="others">others</mat-option>
+              
+                       </mat-select>
+              
+                    
+                    <div *ngIf="category?.invalid && (category?.dirty || category?.touched)">
+                       <mat-error *ngIf="category.errors?.['required']">
+                         Pick one at least
+                       </mat-error>
+                    </div>
+              </mat-form-field> 
+               
+            </div>
+            
+              <button id="sub" type ="submit" mat-raised-button  color="primary" [disabled]="addForm.invalid" (click)="update()">Update Note</button>
+              <button mat-raised-button color="accent" (click)="checkbeforeexit()" >cancel</button>
+              </form>
+
+      </body>
+   </div>
+ </mat-sidenav-content>
+ </mat-sidenav-container>
+ <!--filter bar ends  -->
+ </html>
+<!--  -->
+
+  

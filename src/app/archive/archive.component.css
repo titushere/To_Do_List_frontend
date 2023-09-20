@@ -1,0 +1,66 @@
+mat-button-toggle{
+    margin-left:2px;
+}
+mat-card{
+    margin-top:40px;
+    margin-left:30px;
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+    transition: 0.4s;
+}
+mat-card:hover{
+    transform: scale(1.1);
+}
+html,body{
+    margin:0;
+    overflow: auto;
+    background-size: cover;
+    width: 100%;
+    height: 84vh;
+}
+#searchcomp{
+    margin-left: 150px;
+    margin-right: 200px;
+}
+a:hover {
+    background: #9400FF;
+    background: linear-gradient(236deg, #27005D 0%, #9400FF 100%);
+}
+mat-card-header{
+    background: #27005D;
+    background: linear-gradient(236deg, #27005D 0%, #9400FF 100%);
+    COLOR:#E4F1FF;
+    font-weight: bold;
+    text-transform: capitalize;
+}
+#datebut{
+   background-color:#9400FF ;
+   margin-bottom: 10px;
+}
+#iclass{
+    color: #E4F1FF;
+    padding:10px;
+    border-radius:50%;
+    background-color:#27005D ;
+}
+mat-nav-list a{
+    margin-top: 5px;
+    margin-bottom:5px;
+}
+mat-button-toggle:hover,mat-button-toggle:active{
+    background: #27005D;
+    background: linear-gradient(236deg, #27005D(51,37,89,1) 0%, #9400FF 100%);
+} 
+mat-button-toggle{
+    padding-bottom:15px;
+    color:#E4F1FF;
+    background-color:#27005D  ;
+}
+#logout{
+    margin-left: 1200px;
+    border-radius: 20%;
+    /* height: 40px;
+    margin-top: 20px; */
+    background-color: #27005D;
+    color: #9400FF;
+    cursor: pointer;
+}

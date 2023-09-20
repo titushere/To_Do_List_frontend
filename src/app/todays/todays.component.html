@@ -1,0 +1,64 @@
+
+<html style="display:inline;">
+<mat-toolbar style="background-color: #9400FF;">
+  <mat-toolbar-row>
+  <button mat-icon-button  (click)="sidenav.toggle();"><mat-icon >vertical_split</mat-icon></button>
+    <h3>LIST ALL TASKS TILL DATE</h3>
+    <button (click)="logoutf()" matTooltip="Logout" id="logout"><mat-icon>logout</mat-icon></button>
+</mat-toolbar-row>
+</mat-toolbar>
+
+<mat-sidenav-container >
+<mat-sidenav  #sidenav opened="true" mode="side" style="background-color: #E4F1FF;">
+<mat-nav-list >
+  <a mat-list-item  routerLink="../main" matTooltip="HOME" id="hov"><mat-icon id="iclass">home</mat-icon></a>
+  <a mat-list-item  routerLink="../high" matTooltip="PRIORITIZE"><mat-icon id="iclass">priority_high</mat-icon></a>
+  <a mat-list-item  routerLink="../today" matTooltip="TODAYS TASK"><mat-icon id="iclass">today</mat-icon></a>
+  <a mat-list-item routerLink="../archive"matTooltip="YOUR ARCHIVES" ><mat-icon id="iclass">archive</mat-icon></a>
+</mat-nav-list>
+</mat-sidenav>
+<mat-sidenav-content>
+  <div >
+  
+    <body style="background-color: #AED2FF;" >
+      <!--Generate Cards Dynamically -->
+    <div style="display: flex;flex-wrap: wrap; z-index:8;text-align: center;">
+      <mat-card *ngFor="let value of filteredNotes" style="background-color:#E4F1FF;width: 250px ;box-shadow:2px solid black; border-radius: 10px;">
+        <mat-card-header style="height:40px;text-align:center;font-size:x-large;font-family:Trirong,serif;text-transform: capitalize; border-radius: 10px;">{{value.taskName}}</mat-card-header>
+        <div style="display: flex;">
+          <button mat-stroked-button style="font-size: small; width:fit-content; color: #9400FF;">Satus:{{value.status}}</button>
+          <button mat-raised-button style="width: fit-content; color: #27005D;">Priority:{{value.priority}}</button>
+        </div>
+      
+        <mat-card-content class="raised" style="font-family:monospace;font-weight: bold;font-size: large; margin: 10px;"  matTooltip="Category">{{value.category}}</mat-card-content>
+        <mat-card-content class="raised" style="text-align:center;font-size: medium;color: black;margin-top: 20px;" matTooltip="Description">{{value.taskDesc}}</mat-card-content>
+        <!-- <mat-expansion-panel  style="margin-top: 10px;" hideToggle>
+          <mat-expansion-panel-header>
+            <mat-panel-title style="text-align:justify;font-size: medium;color:rgb(0, 83, 128);margin-right:10px;">
+            Description
+            </mat-panel-title>
+            <mat-panel-description>
+              Click to view in Detail
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <p>{{value.taskDesc}}</p>
+        </mat-expansion-panel> -->
+  
+        <mat-card-footer style="margin-bottom:10px;"></mat-card-footer>
+
+        <mat-card-footer>
+          <button mat-raised-button color="primary" id="datebut"><mat-icon>calendar_today</mat-icon>Due:
+                {{value.dueDate | date}}</button><br>
+
+          <a routerLink="../edit/{{value.taskid}}"><button mat-raised-button color="accent" style="margin-right:10px;background-color:white" matTooltip="EDIT THIS" appearance="legacy" ><mat-icon style="color: #27005D;">edit</mat-icon></button></a>
+
+          <button mat-raised-button color="accent" style="margin-left:50px;background-color:white"  (click)="setStatus(value.taskid)" matTooltip="ARCHIVE THIS" appearance="legacy"><mat-icon style="color:#27005D">archive</mat-icon></button>
+        </mat-card-footer>
+    </mat-card>
+    </div>
+    </body>
+  </div>
+</mat-sidenav-content>
+</mat-sidenav-container>
+<!--filter bar ends  -->
+</html>
